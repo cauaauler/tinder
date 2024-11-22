@@ -2,17 +2,29 @@
 
 class Usuario implements ActiveRecord{
 
-    private int $idUsuario;
+    private int $id;
     
-    public function __construct(private string $email,private string $senha){
+    public function __construct(
+    private string $nome,
+    private string $email,
+    private string $senha
+    ){
     }
 
-    public function setIdUsuario(int $idUsuario):void{
-        $this->idUsuario = $idUsuario;
+    public function setId(int $id):void{
+        $this->id = $id;
     }
 
-    public function getIdUsuario():int{
-        return $this->idUsuario;
+    public function getId():int{
+        return $this->id;
+    }
+
+    public function setNome(string $nome):void{
+        $this->nome = $nome;
+    }
+
+    public function getNome():string{
+        return $this->nome;
     }
 
     public function setSenha(string $senha):void{
@@ -34,37 +46,41 @@ class Usuario implements ActiveRecord{
     public function save():bool{
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
-        if(isset($this->idUsuario)){
-            $sql = "UPDATE usuarios SET email = '{$this->email}' ,senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
+        if(isset($this->id)){
+            $sql = "UPDATE usuarios SET email = ?, senha = ?, nome = ? WHERE id = ?";
+            $conexao->executa($sql,[$this->email,$this->senha,$this->nome,$this->id]);
         }else{
-            $sql = "INSERT INTO usuarios (email,senha) VALUES ('{$this->email}','{$this->senha}')";
+            $sql = "INSERT INTO usuarios (email, senha, nome) VALUES (?,?,?)";
+            $conexao->executa($sql,[$this->email,$this->senha,$this->nome]);
         }
-        return $conexao->executa($sql);
+        return true;
     }
 
-    public static function find($idUsuario):Usuario{
+    public static function find($id):Usuario{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuarios WHERE idUsuario = {$idUsuario}";
+        $sql = "SELECT * FROM usuarios WHERE id = ?";
+        $conexao->executa($sql,[$id]);
         $resultado = $conexao->consulta($sql);
-        $u = new Usuario($resultado[0]['email'],$resultado[0]['senha']);
-        $u->setIdUsuario($resultado[0]['idUsuario']);
+        $u = new Usuario($resultado[0]['nome'], $resultado[0]['email'], $resultado[0]['senha']);
+        $u->setId($resultado[0]['id']);
         return $u;
     }
 
     public function delete():bool{
         $conexao = new MySQL();
-        $sql = "DELETE FROM usuarios WHERE idUsuario = {$this->idUsuario}";
-        return $conexao->executa($sql);
+        $sql = "DELETE FROM usuarios WHERE id = ?";
+        return $conexao->executa($sql,[$this->id]);
     }
 
-    public static function findall():array{
+    public static function findAll():array{
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuarios";
+        $conexao->executa($sql);
         $resultados = $conexao->consulta($sql);
         $usuarios = array();
         foreach($resultados as $resultado){
-            $u = new Usuario($resultado['email'],$resultado['senha']);
-            $u->setIdUsuario($resultado['idUsuario']);
+            $u = new Usuario($resultado['nome'], $resultado['email'], $resultado['senha']);
+            $u->setId($resultado['id']);
             $usuarios[] = $u;
         }
         return $usuarios;
@@ -72,11 +88,12 @@ class Usuario implements ActiveRecord{
 
     public function authenticate():bool{
         $conexao = new MySQL();
-        $sql = "SELECT idUsuario,senha FROM usuarios WHERE email = '{$this->email}'";
+        $sql = "SELECT id, senha FROM usuarios WHERE email = ?";
+        $conexao->executa($sql,[$this->email]);
         $resultados = $conexao->consulta($sql);
         if(password_verify($this->senha,$resultados[0]['senha'])){
             session_start();
-            $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+            $_SESSION['id'] = $resultados[0]['id'];
             $_SESSION['email'] = $resultados[0]['email'];
             return true;
         }else{
@@ -84,3 +101,4 @@ class Usuario implements ActiveRecord{
         }
     }
 }
+
