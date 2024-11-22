@@ -1,14 +1,15 @@
 {
-    "name": "vinicius/exemplo_banco",
+    "name": "aluno/tinder",
+    "autoload": {
+        "psr-4": {
+            "Aluno\\Tinder\\": "src/"
+        }
+    },
     "authors": [
         {
-            "name": "vhf"
+            "name": "Cauã Auler",
+            "email": "cauaauler@gmail.com"
         }
     ],
-    "require": {},
-    "autoload":{
-        "psr-4": {
-            "":"src/"
-        }
-    }
+    "require": {}
 }
