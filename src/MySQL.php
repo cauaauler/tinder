@@ -1,5 +1,7 @@
 <?php
 
+namespace CauaAuler\Tinder;
+
 require_once __DIR__."\Configuracao.php";
 
 class MySQL{
@@ -11,18 +13,46 @@ class MySQL{
 		$this->connection->set_charset("utf8");
 	}
 
-	public function executa($sql){
-		$result = $this->connection->query($sql);
-		return $result;
+	public function executa(string $sql, array $params = []): bool
+	{
+		$stmt = $this->connection->prepare($sql);
+		if (!$stmt) {
+			throw new \Exception("Erro ao preparar consulta: " . $this->connection->error);
+		}
+
+		if (!empty($params)) {
+			$tipos = str_repeat("s", count($params)); // Assumindo que todos os parâmetros são strings
+			$stmt->bind_param($tipos, ...$params);
+		}
+
+		$resultado = $stmt->execute();
+		if (!$resultado) {
+			throw new \Exception("Erro ao executar consulta: " . $stmt->error);
+		}
+
+		return $resultado;
 	}
-	public function consulta($sql){
-		$result = $this->connection->query($sql);
-		$item = array();
-		$data = array();
-		while($item = mysqli_fetch_array($result)){
-			$data[] = $item;
+
+	public function consulta(string $sql, array $params = []): array
+	{
+		$stmt = $this->connection->prepare($sql);
+		if (!$stmt) {
+			throw new \Exception("Erro ao preparar consulta: " . $this->connection->error);
 		}
-		return $data;
+
+		if (!empty($params)) {
+			$tipos = str_repeat("s", count($params));
+			$stmt->bind_param($tipos, ...$params);
 		}
+
+		$stmt->execute();
+		$resultado = $stmt->get_result();
+
+		if (!$resultado) {
+			throw new \Exception("Erro ao obter resultados: " . $stmt->error);
+		}
+
+		return $resultado->fetch_all(MYSQLI_ASSOC);
+	}
 	}
 ?>

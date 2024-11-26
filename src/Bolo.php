@@ -1,5 +1,8 @@
 <?php
 
+namespace CauaAuler\Tinder;
+
+
 class Bolo implements ActiveRecord
 {
     private int $id;

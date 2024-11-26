@@ -1,5 +1,7 @@
 <?php
 
+namespace CauaAuler\Tinder;
+
 interface ActiveRecord{
 
     public function save():bool;

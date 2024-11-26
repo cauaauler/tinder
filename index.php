@@ -1,11 +1,17 @@
 <?php
+
+namespace CauaAuler\Tinder;
+
+require_once __DIR__."/vendor/autoload.php";
+
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $u = new Usuario($_POST['email'],$_POST['senha']);
+    $u = new Usuario("",$_POST['email'],$_POST['senha']);
     if($u->authenticate()){
         header("location: restrita.php");
     }else{
-        header("location: index.php");
+        echo "Usuario ou senha incorretos";
+        // header("location: index.php");
     }
 }
 ?>

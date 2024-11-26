@@ -1,11 +1,13 @@
 <?php
 
+namespace CauaAuler\Tinder;
+
 class Usuario implements ActiveRecord{
 
     private int $id;
     
     public function __construct(
-    private string $nome,
+        private string $nome,
     private string $email,
     private string $senha
     ){
@@ -43,22 +45,26 @@ class Usuario implements ActiveRecord{
         return $this->email;
     }
 
-    public function save():bool{
+    public function save(): bool
+    {
         $conexao = new MySQL();
-        $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
-        if(isset($this->id)){
-            $sql = "UPDATE usuarios SET email = ?, senha = ?, nome = ? WHERE id = ?";
-            $conexao->executa($sql,[$this->email,$this->senha,$this->nome,$this->id]);
-        }else{
-            $sql = "INSERT INTO usuarios (email, senha, nome) VALUES (?,?,?)";
-            $conexao->executa($sql,[$this->email,$this->senha,$this->nome]);
+        $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
+
+        if (isset($this->id)) {
+            $sql = "UPDATE usuario SET email = ?, senha = ?, nome = ? WHERE idUsuario = ?";
+            $params = [$this->email, $this->senha, $this->nome, $this->id];
+        } else {
+            $sql = "INSERT INTO usuario (email, senha, nome) VALUES (?, ?, ?)";
+            $params = [$this->email, $this->senha, $this->nome];
         }
-        return true;
+
+        return $conexao->executa($sql, $params);
     }
+
 
     public static function find($id):Usuario{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuarios WHERE id = ?";
+        $sql = "SELECT * FROM usuario WHERE id = ?";
         $conexao->executa($sql,[$id]);
         $resultado = $conexao->consulta($sql);
         $u = new Usuario($resultado[0]['nome'], $resultado[0]['email'], $resultado[0]['senha']);
@@ -68,37 +74,41 @@ class Usuario implements ActiveRecord{
 
     public function delete():bool{
         $conexao = new MySQL();
-        $sql = "DELETE FROM usuarios WHERE id = ?";
+        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
         return $conexao->executa($sql,[$this->id]);
     }
 
     public static function findAll():array{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM usuario";
         $conexao->executa($sql);
         $resultados = $conexao->consulta($sql);
-        $usuarios = array();
+        $usuario = array();
         foreach($resultados as $resultado){
             $u = new Usuario($resultado['nome'], $resultado['email'], $resultado['senha']);
             $u->setId($resultado['id']);
-            $usuarios[] = $u;
+            $usuario[] = $u;
         }
-        return $usuarios;
+        return $usuario;
     }
 
-    public function authenticate():bool{
-        $conexao = new MySQL();
-        $sql = "SELECT id, senha FROM usuarios WHERE email = ?";
-        $conexao->executa($sql,[$this->email]);
-        $resultados = $conexao->consulta($sql);
-        if(password_verify($this->senha,$resultados[0]['senha'])){
-            session_start();
-            $_SESSION['id'] = $resultados[0]['id'];
-            $_SESSION['email'] = $resultados[0]['email'];
-            return true;
-        }else{
-            return false;
-        }
+public function authenticate(): bool {
+    $conexao = new MySQL();
+    $sql = "SELECT idUsuario, senha FROM usuario WHERE email = ?";
+    $resultados = $conexao->consulta($sql, [$this->email]);
+
+    if (empty($resultados)) {
+        return false;
     }
+
+    if (password_verify($this->senha, $resultados[0]['senha'])) {
+        session_start();
+        $_SESSION['id'] = $resultados[0]['id'];
+        return true;
+    }
+
+    return false;
+}
+
 }
 
