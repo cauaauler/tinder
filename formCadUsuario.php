@@ -1,12 +1,14 @@
 <?php
 
-namespace CauaAuler\Tinder;
+require_once __DIR__ . '/vendor/autoload.php';
+
+use CauaAuler\Tinder\Usuario;
 
 if (isset($_POST['botao'])) {
-    require_once __DIR__ . "/vendor/autoload.php";
     $u = new Usuario($_POST['nome'], $_POST['email'], $_POST['senha']);
-    $u->save();
+    $u->save(); 
     header("location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>

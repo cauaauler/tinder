@@ -10,6 +10,8 @@ if(isset($_POST['botao'])){
     if($u->authenticate()){
         header("location: restrita.php");
     }else{
+        header("location: restrita.php");
+
         echo "Usuario ou senha incorretos";
         // header("location: index.php");
     }

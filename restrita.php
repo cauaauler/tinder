@@ -1,11 +1,13 @@
 <?php
+
+use CauaAuler\Tinder\Usuario;
+
 session_start();
 if(!isset($_SESSION['idUsuario'])){
     header("location:index.php");
 }
 require_once __DIR__."/vendor/autoload.php";
 
-$contatos = Pessoa::findallByUsuario($_SESSION['idUsuario']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

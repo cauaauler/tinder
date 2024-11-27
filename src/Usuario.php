@@ -103,7 +103,7 @@ public function authenticate(): bool {
 
     if (password_verify($this->senha, $resultados[0]['senha'])) {
         session_start();
-        $_SESSION['id'] = $resultados[0]['id'];
+        $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
         return true;
     }
 

@@ -1,15 +1,15 @@
 {
-	"name": "caua_auler/tinder",
-	"autoload": {
-		"psr-4": {
-			"CauaAuler\\Tinder\\": "src/"
-		}
-	},
-	"authors": [
-		{
-			"name": "Cauã Auler",
-			"email": "cauaauler@gmail.com"
-		}
-	],
-	"require": {}
+    "name": "caua_auler/tinder",
+    "autoload": {
+        "psr-4": {
+            "CauaAuler\\Tinder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cauã Auler",
+            "email": "cauaauler@gmail.com"
+        }
+    ],
+    "require": {}
 }
