@@ -48,7 +48,7 @@ class Usuario implements ActiveRecord{
     public function save(): bool
     {
         $conexao = new MySQL();
-        // $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
+        $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
 
         if (isset($this->id)) {
             $sql = "UPDATE usuario SET email = ?, senha = ?, nome = ? WHERE idUsuario = ?";
@@ -98,8 +98,7 @@ public function authenticate(): bool {
 
     $resultados = $conexao->consulta($sql);
 
-    // if (password_verify($this->senha, $resultados[0]['senha'])) {
-    if ($this->senha == $resultados[0]['senha']) {
+    if (password_verify($this->senha, $resultados[0]['senha'])) {
         session_start();
         $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
         return true;
