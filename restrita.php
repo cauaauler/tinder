@@ -26,16 +26,7 @@ require_once __DIR__."/vendor/autoload.php";
         <td>Opções</td>
     </tr>
     <?php
-    foreach($contatos as $contato){
-        echo "<tr>";
-        echo "<td>{$contato->getNome()}</td>";
-        echo "<td>{$contato->getEmail()}</td>";
-        echo "<td>
-                <a href='formEditPessoa.php?id={$contato->getId()}'>Editar</a>
-                <a href='excluirPessoa.php?id={$contato->getId()}'>Excluir</a> 
-             </td>";
-        echo "</tr>";
-    }
+    
     ?>
 </table>
 <a href='formCadPessoa.php'>Adicionar Contato</a> | 

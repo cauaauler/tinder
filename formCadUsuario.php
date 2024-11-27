@@ -6,7 +6,7 @@ use CauaAuler\Tinder\Usuario;
 
 if (isset($_POST['botao'])) {
     $u = new Usuario($_POST['nome'], $_POST['email'], $_POST['senha']);
-    $u->save(); 
+    $u->save();
     header("location: index.php");
     exit;
 }

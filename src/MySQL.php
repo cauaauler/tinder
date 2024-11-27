@@ -33,24 +33,12 @@ class MySQL{
 		return $resultado;
 	}
 
-	public function consulta(string $sql, array $params = []): array
+	public function consulta(string $sql): array
 	{
 		$stmt = $this->connection->prepare($sql);
-		if (!$stmt) {
-			throw new \Exception("Erro ao preparar consulta: " . $this->connection->error);
-		}
-
-		if (!empty($params)) {
-			$tipos = str_repeat("s", count($params));
-			$stmt->bind_param($tipos, ...$params);
-		}
-
+		
 		$stmt->execute();
 		$resultado = $stmt->get_result();
-
-		if (!$resultado) {
-			throw new \Exception("Erro ao obter resultados: " . $stmt->error);
-		}
 
 		return $resultado->fetch_all(MYSQLI_ASSOC);
 	}
