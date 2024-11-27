@@ -15,16 +15,13 @@ require_once __DIR__."/vendor/autoload.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Página de Contatos</title>
 </head>
 <body>
-
+<h1>Hoje eu inventei de fazer um bolo ó™</h1>
 <table>
-    <tr>
-        <td>Nome</td>
-        <td>E-mail</td>
-        <td>Opções</td>
-    </tr>
+    
     <?php
     
     ?>

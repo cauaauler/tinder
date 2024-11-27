@@ -1,0 +1,18 @@
+
+h1{
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+color:rgb(32, 13, 44);
+text-align:center;
+background-color:#b487ce;
+border-width: 3px;
+border-style:solid;
+border-color: rgb(79, 59, 99);
+margin-top: 0%;
+padding: 10px;
+}
+body{
+background-image: linear-gradient(to bottom, rgb(255, 194, 235),rgb(136, 49, 124));
+background-attachment: fixed;
+}
+
+
