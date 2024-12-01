@@ -38,7 +38,7 @@ CREATE
 OR REPLACE TABLE `bolo` (
   `nome` varchar(60) NOT NULL,
   `votos` int (11) NOT NULL,
-  `sabor` int (11) NOT NULL,
+  `sabor` varchar (30) NOT NULL,
   `descricao` text NOT NULL,
   `idBolo` int (11) NOT NULL,
   `imagem` text NOT NULL,
@@ -77,6 +77,10 @@ ALTER TABLE `bolo` MODIFY `idBolo` int (11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario` MODIFY `idUsuario` int (11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `bolo_usuario`
+--
+ALTER TABLE `bolo_usuario` MODIFY `id` int (11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
@@ -100,7 +104,24 @@ VALUES
     '$2y$10$V7H2oyxLxDBCKtegSFx/S.DlG2CAQBMVpIFA2GcfoOsTVA5aQz0Dq'
   );
 
-COMMIT;
+INSERT INTO
+  `bolo` (`nome`, `votos`, `sabor`, `descricao`, `imagem`)
+VALUES
+  (
+    'Bolo de Chocolate',
+    0,
+    'Chocolate',
+    'Bolo de chocolate com cobertura de chocolate',
+    '/uploads/bolo-de-chocolate.jpg'
+  ),
+  (
+    'Bolo de Morango',
+    0,
+    'Morango',
+    'Bolo de morango com cobertura de morango',
+    '/uploads/bolo-de-morango.jpg'
+  );
+   COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 

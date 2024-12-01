@@ -99,5 +99,17 @@ class Bolo_usuario implements ActiveRecord
         return $conexao->executa($sql, [$this->id]);
     }
 
+public static function findByUserAndBolo($idUsuario, $idBolo)
+{
+    $idUsuario = intval($idUsuario);
+    $idBolo = intval($idBolo);
+
+    $sql = "SELECT * FROM bolo_usuario WHERE idUsuario = $idUsuario AND idBolo = $idBolo";
+
+    $mysql = new MySQL();
+    $resultado = $mysql->consulta($sql);
+
+    return !empty($resultado) ? $resultado[0] : null;
+}
 
 }
