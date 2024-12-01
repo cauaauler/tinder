@@ -38,6 +38,7 @@ if (isset($_GET['order'])) {
             <option <?php echo isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'selected' : ''; ?> value="ASC">Do menor para o maior</option>
         </select>
     </form>
+    <a href="restrita.php">Voltar</a>
 </body>
 
 </html>
