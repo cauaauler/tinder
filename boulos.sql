@@ -1,4 +1,3 @@
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -30,40 +29,41 @@ SET
 --
 -- Estrutura para tabela `bolos`
 --
-CREATE OR REPLACE DATABASE `bolos`;
+CREATE
+OR REPLACE DATABASE `bolos`;
 
 USE `bolos`;
 
-CREATE TABLE IF NOT EXISTS
-  `bolo` (
-    `nome` varchar(60) NOT NULL,
-    `votos` int (11) NOT NULL,
-    `sabor` int (11) NOT NULL,
-    `descricao` text NOT NULL,
-    `idBolo` int (11) NOT NULL,
-    `imagem` text NOT NULL,
-    PRIMARY KEY (`idBolo`)
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+CREATE
+OR REPLACE TABLE `bolo` (
+  `nome` varchar(60) NOT NULL,
+  `votos` int (11) NOT NULL,
+  `sabor` int (11) NOT NULL,
+  `descricao` text NOT NULL,
+  `idBolo` int (11) NOT NULL,
+  `imagem` text NOT NULL,
+  PRIMARY KEY (`idBolo`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS
-  `bolo_usuario` (
-    `id` int (11) NOT NULL,
-    `voto` tinyint (1) NOT NULL,
-    `idUsuario` int (11) NOT NULL,
-    `idBolo` int (11) NOT NULL,
-    PRIMARY KEY (`id`),
-    KEY `idBolo` (`idBolo`),
-    KEY `idUsuario` (`idUsuario`)
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+CREATE
+OR REPLACE TABLE `bolo_usuario` (
+  `id` int (11) NOT NULL,
+  `voto` tinyint (1) NOT NULL,
+  `idUsuario` int (11) NOT NULL,
+  `idBolo` int (11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idBolo` (`idBolo`),
+  KEY `idUsuario` (`idUsuario`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS
-  `usuario` (
-    `nome` varchar(60) NOT NULL,
-    `idUsuario` int (11) NOT NULL,
-    `senha` varchar(150) NOT NULL,
-    `email` varchar(60) NOT NULL,
-    PRIMARY KEY (`idUsuario`)
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+CREATE
+OR REPLACE TABLE `usuario` (
+  `nome` varchar(60) NOT NULL,
+  `idUsuario` int (11) NOT NULL,
+  `senha` varchar(150) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -90,7 +90,15 @@ ADD CONSTRAINT `bolo_usuario_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuar
 --
 -- Inserindo o gerente no banco
 --
-INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES (1, 'Administrador', 'admin@tinder.com', '$2y$10$9CYZiIUzJsFN2rffdEI4w.QokSV.ieJJ/f3Mkbz1nfa6/yy0r8Lou');
+INSERT INTO
+  `usuario` (`idUsuario`, `nome`, `email`, `senha`)
+VALUES
+  (
+    1,
+    'Administrador',
+    'admin@tinder.com',
+    '$2y$10$V7H2oyxLxDBCKtegSFx/S.DlG2CAQBMVpIFA2GcfoOsTVA5aQz0Dq'
+  );
 
 COMMIT;
 

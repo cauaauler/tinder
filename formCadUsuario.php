@@ -7,11 +7,6 @@ use CauaAuler\Tinder\Usuario;
     if (isset($_POST['botao'])) {
         $usuarios = Usuario::findAll();
 
-
-    $senha = 'admin'; // A senha em texto puro
-    $hash = password_hash($senha, PASSWORD_BCRYPT);
-
-    var_dump($hash);
         // Extrair emails usando array_map
         $emails = array_map(fn($usuario) => $usuario->getEmail(), $usuarios);
 
@@ -50,6 +45,7 @@ use CauaAuler\Tinder\Usuario;
         <input type='password' name='senha' id='senha' required>
         <input type='submit' name='botao' value='Cadastrar'>
     </form>
+    <input type="button" value="Voltar" onclick="window.location.href = 'index.php';">
 </body>
 
 </html>
