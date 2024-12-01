@@ -87,6 +87,11 @@ ALTER TABLE `usuario` MODIFY `idUsuario` int (11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `bolo_usuario` ADD CONSTRAINT `bolo_usuario_ibfk_1` FOREIGN KEY (`idBolo`) REFERENCES `bolo` (`idBolo`),
 ADD CONSTRAINT `bolo_usuario_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
+--
+-- Inserindo o gerente no banco
+--
+INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES (1, 'Administrador', 'admin@tinder.com', '$2y$10$9CYZiIUzJsFN2rffdEI4w.QokSV.ieJJ/f3Mkbz1nfa6/yy0r8Lou');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

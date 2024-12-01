@@ -7,6 +7,11 @@ use CauaAuler\Tinder\Usuario;
     if (isset($_POST['botao'])) {
         $usuarios = Usuario::findAll();
 
+
+    $senha = 'admin'; // A senha em texto puro
+    $hash = password_hash($senha, PASSWORD_BCRYPT);
+
+    var_dump($hash);
         // Extrair emails usando array_map
         $emails = array_map(fn($usuario) => $usuario->getEmail(), $usuarios);
 
