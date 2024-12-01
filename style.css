@@ -1,5 +1,9 @@
-
-h1{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header, .bolo-titulo{
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 color:rgb(0, 0, 0);
 text-align:center;
@@ -15,4 +19,22 @@ background-image: linear-gradient(to bottom, rgb(255, 194, 235),rgb(136, 49, 124
 background-attachment: fixed;
 }
 
+/* quem for fazer aqui pode mudar tudo */
+.container{
+    display: flex;
+    justify-content: center;  /* Alinha horizontalmente */
+    align-items: center;      /* Alinha verticalmente */
+    text-align: center;       /* Alinha o texto ao centro */
 
+}
+.bolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    flex-direction: column; 
+}

@@ -11,7 +11,6 @@ if(isset($_POST['botao'])){
         header("location: restrita.php");
     }else{
         echo "Usuario ou senha incorretos";
-        // header("location: index.php");
     }
 }
 ?>

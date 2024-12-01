@@ -124,15 +124,14 @@ class Bolo implements ActiveRecord
         return $bolo;
     }
 
-    public static function findAllByUsuario($idUsuario): array
-    {
+    public static function findAllRanking($orderby = 'DESC'): array{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM bolo WHERE idUsuario = {$idUsuario}";
+        $sql = "SELECT * FROM bolo ORDER BY votos $orderby";
         $resultados = $conexao->consulta($sql);
         $bolo = [];
         foreach ($resultados as $resultado) {
             $p = new Bolo($resultado['nome'], $resultado['votos'], $resultado['sabor'], $resultado['descricao'], $resultado['imagem']);
-            $p->setId($resultado['id']);
+            $p->setId($resultado['idBolo']);
             $bolo[] = $p;
         }
         return $bolo;

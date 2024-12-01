@@ -24,9 +24,9 @@ $sql = "SELECT b.idBolo
         )
         LIMIT 1";
 
-    // Executa a consulta usando o idUsuario
-    $mysql = new MySQL();
-    $resultado = $mysql->consulta($sql);
+// Executa a consulta usando o idUsuario
+$mysql = new MySQL();
+$resultado = $mysql->consulta($sql);
 // Se houver resultados, define o boloAtual como o primeiro bolo não avaliado
 if (count($resultado) > 0) {
     $boloAtual = $resultado[0]['idBolo'];
@@ -62,29 +62,35 @@ if (isset($_GET['idBolo']) && !$avaliacaoExistente) {
 </head>
 
 <body>
-    <h1>Hoje eu inventei de fazer um bolo ó™</h1>
+    <header>
+        <h1>Hoje eu inventei de fazer um bolo ó™</h1>
+        <a href='sair.php'>Sair</a>
+        <a href='ranking.php'>Ranking</a>
+    </header>
 
-    <?php
-    if (!$avaliacaoExistente) {
-        // Exibe o bolo atual se não foi avaliado
-        $bolo = Bolo::find($boloAtual);
-        echo "<div>";
-        echo "<p>" . $bolo->getNome() . "</p>";
-        echo "<p>" . $bolo->getVotos() . " votos</p>";
-        echo "<p>" . $bolo->getSabor() . "</p>";
-        echo "<p>" . $bolo->getDescricao() . "</p>";
-        echo "</div>";
+    <main>
+        <div class="container">
+            <div class="bolo">
+                <?php
+                if (!$avaliacaoExistente) {
+                    // Exibe o bolo atual se não foi avaliado
+                    $bolo = Bolo::find($boloAtual);
+                    echo "<h1 class='bolo-titulo'>" . $bolo->getNome() . "</h1>";
+                    // echo "<p>" . $bolo->getVotos() . " votos</p>";
+                    echo "<p>" . $bolo->getSabor() . "</p>";
+                    echo "<p>" . $bolo->getDescricao() . "</p>";
 
-        echo "<div>";
-        echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=1'>Comeria</a>";
-        echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=0'>Não comeria</a>";
-        echo "</div>";
-    } else {
-        echo "<p>A padaria está fechada, os bolos acabaram!</p>";
-    }
-    ?>
+                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=1'>Comeria</a>";
+                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=0'>Não comeria</a>";
+                } else {
+                    echo "<p>A padaria está fechada, os bolos acabaram!</p>";
+                }
+                ?>
+            </div>
 
-    <a href='sair.php'>Sair</a>
+        </div>
+    </main>
+
 </body>
 
 </html>
