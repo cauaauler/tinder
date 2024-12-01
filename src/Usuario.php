@@ -2,51 +2,32 @@
 
 namespace CauaAuler\Tinder;
 
-class Usuario implements ActiveRecord{
-
+class Usuario implements ActiveRecord {
     private int $id;
-    
+
     public function __construct(
         private string $nome,
-    private string $email,
-    private string $senha
-    ){
-    }
+        private string $email,
+        private string $senha
+    ) {}
 
-    public function setId(int $id):void{
+    public function setId(int $id): void {
         $this->id = $id;
     }
 
-    public function getId():int{
+    public function getId(): int {
         return $this->id;
     }
 
-    public function setNome(string $nome):void{
-        $this->nome = $nome;
-    }
-
-    public function getNome():string{
+    public function getNome(): string {
         return $this->nome;
     }
 
-    public function setSenha(string $senha):void{
-        $this->senha = $senha;
-    }
-
-    public function setEmail(string $email):void{
-        $this->email = $email;
-    }
-
-    public function getSenha():string{
-        return $this->senha;
-    }
-
-    public function getEmail():string{
+    public function getEmail(): string {
         return $this->email;
     }
 
-    public function save(): bool
-    {
+    public function save(): bool {
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
 
@@ -61,51 +42,56 @@ class Usuario implements ActiveRecord{
         return $conexao->executa($sql, $params);
     }
 
-
-    public static function find($id):Usuario{
+    public static function find($id): Usuario
+    {
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuario WHERE id = ?";
-        $conexao->executa($sql,[$id]);
+        $sql = "SELECT * FROM usuario WHERE id = $id";
+        $conexao->executa($sql);
         $resultado = $conexao->consulta($sql);
         $u = new Usuario($resultado[0]['nome'], $resultado[0]['email'], $resultado[0]['senha']);
         $u->setId($resultado[0]['id']);
         return $u;
     }
 
-    public function delete():bool{
-        $conexao = new MySQL();
-        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
-        return $conexao->executa($sql,[$this->id]);
-    }
-
-    public static function findAll():array{
+    public static function findAll(): array {
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuario";
-        $conexao->executa($sql);
         $resultados = $conexao->consulta($sql);
-        $usuario = array();
-        foreach($resultados as $resultado){
-            $u = new Usuario($resultado['nome'], $resultado['email'], $resultado['senha']);
-            $u->setId($resultado['id']);
-            $usuario[] = $u;
+
+        $usuarios = [];
+        foreach ($resultados as $resultado) {
+            $u = new Usuario($resultado['nome'], $resultado['email'], '');
+            $u->setId($resultado['idUsuario']);
+            $usuarios[] = $u;
         }
-        return $usuario;
+        return $usuarios;
     }
 
-public function authenticate(): bool {
-    $conexao = new MySQL();
-    $sql = "SELECT idUsuario, senha FROM usuario WHERE email = '$this->email'";
+    public function delete(): bool {
+        if (!isset($this->id)) {
+            return false;
+        }
 
-    $resultados = $conexao->consulta($sql);
-
-    if (password_verify($this->senha, $resultados[0]['senha'])) {
-        session_start();
-        $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
-        return true;
+        $conexao = new MySQL();
+        $sql = "DELETE FROM usuario WHERE idUsuario = ?";
+        return $conexao->executa($sql, [$this->id]);
     }
 
-    return false;
-}
+    public function authenticate(): bool {
+        $conexao = new MySQL();
+        $sql = "SELECT idUsuario, senha FROM usuario WHERE email = '$this->email'";
+        $resultados = $conexao->consulta($sql);
 
-}
+        if (empty($resultados)) {
+            return false;
+        }
 
+        if (password_verify($this->senha, $resultados[0]['senha'])) {
+            session_start();
+            $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+            return true;
+        }
+
+        return false;
+    }
+}

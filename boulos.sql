@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS
   `usuario` (
     `nome` varchar(60) NOT NULL,
     `idUsuario` int (11) NOT NULL,
-    `senha` varchar(50) NOT NULL,
+    `senha` varchar(150) NOT NULL,
     `email` varchar(60) NOT NULL,
     PRIMARY KEY (`idUsuario`)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
