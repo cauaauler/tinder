@@ -90,7 +90,7 @@ class Bolo implements ActiveRecord
     public function delete(): bool
     {
         $conexao = new MySQL();
-        $sql = "DELETE FROM bolo WHERE id = {$this->id}";
+        $sql = "DELETE FROM bolo WHERE idBolo = {$this->id}";
         return $conexao->executa($sql);
     }
 

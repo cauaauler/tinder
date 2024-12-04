@@ -46,6 +46,8 @@ $bolos = Bolo::findAll();
             </td>
         </tr>
     <?php endforeach; ?>
+
+    
 </table>
 
 </body>
