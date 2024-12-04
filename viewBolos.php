@@ -47,8 +47,8 @@ $bolos = Bolo::findAll();
         </tr>
     <?php endforeach; ?>
 
-    
 </table>
+<a href="restrita.php">Voltar</a>
 
 </body>
 
