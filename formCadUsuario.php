@@ -45,7 +45,7 @@ use CauaAuler\Tinder\Usuario;
         <input type='password' name='senha' id='senha' required>
         <input type='submit' name='botao' value='Cadastrar'>
     </form>
-    <input type="button" value="Voltar" onclick="window.location.href = 'index.php';">
+    <input type="button" value="Voltar" onclick="window.location.href = 'restrita.php';">
 </body>
 
 </html>

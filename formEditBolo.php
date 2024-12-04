@@ -47,7 +47,7 @@ $bolo = Bolo::find($id);
         <input type='text' name='imagem' id='imagem' value="<?php echo $bolo->getImagem(); ?>" required>
         <input type='submit' name='botao' value='Editar'>
     </form>
-    <input type="button" value="Voltar" onclick="window.location.href = 'index.php';">
+    <input type="button" value="Voltar" onclick="window.location.href = 'restrita.php';">
 </body>
 
 </html>

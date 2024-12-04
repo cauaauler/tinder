@@ -35,7 +35,6 @@ $bolo = Bolo::find($id);
     <form action='deleteBolo.php' method='post'>
         <input type="hidden" name="id" value="<?php echo $bolo->getId(); ?>">
         <input type='submit' name='botao' value='Excluir'>
-        <input type="button" value="Cancelar" onclick="window.location.href = 'index.php';">
     </form>
 </body>
 

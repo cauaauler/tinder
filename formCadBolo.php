@@ -45,7 +45,7 @@ use CauaAuler\Tinder\Bolo;
         <input type='file' name='imagem' id='imagem' required>
         <input type='submit' name='botao' value='Cadastrar'>
     </form>
-    <input type="button" value="Voltar" onclick="window.location.href = 'index.php';">
+    <input type="button" value="Voltar" onclick="window.location.href = 'restrita.php';">
 </body>
 
 </html>
