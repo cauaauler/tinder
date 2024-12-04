@@ -30,11 +30,34 @@ background-attachment: fixed;
 .bolo{
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
+    align-items:center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    background-color:hwb(36 72% 0%);
+    border-width: 3px;
+    border-style:solid;
+    border-color: rgb(141, 112, 69);
     width: 300px;
     height: 300px;
     border-radius: 10px;
-    flex-direction: column; 
+    flex-direction:column;
+    margin: 30px;
+    padding: 200px;
+    
+}
+.bolodesc{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    
+}
+.bolotexto{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
 }
