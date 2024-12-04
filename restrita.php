@@ -87,6 +87,7 @@ if (isset($_GET['idBolo']) && !$avaliacaoExistente) {
                     // echo "<p>" . $bolo->getVotos() . " votos</p>";
                     echo "<p>" . $bolo->getSabor() . "</p>";
                     echo "<p>" . $bolo->getDescricao() . "</p>";
+                    echo "<img src='" . $bolo->getImagem() . "' alt='" . $bolo->getNome() . "' class='bolo-imagem'>";
 
                     echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=1'>Comeria</a>";
                     echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=0'>Não comeria</a>";
