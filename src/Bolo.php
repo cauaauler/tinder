@@ -101,7 +101,6 @@ class Bolo implements ActiveRecord
         $resultado = $conexao->consulta($sql);
         if (empty($resultado)) {
             echo ("A padaria está fechada, os bolos acabaram!");
-            echo "<a href='sair.php'>Sair</a>";
 
             exit();
         }
