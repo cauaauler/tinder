@@ -45,7 +45,26 @@ VALUES
   (1, 'Administrador', 'admin@tinder.com', '$2y$10$V7H2oyxLxDBCKtegSFx/S.DlG2CAQBMVpIFA2GcfoOsTVA5aQz0Dq');
 
 -- Inserir dados iniciais de bolos
-INSERT INTO `bolo` (`nome`, `votos`, `sabor`, `descricao`, `imagem`)
-VALUES 
-  ('Bolo de Chocolate', 0, 'Chocolate', 'Bolo de chocolate com cobertura de chocolate', '/uploads/bolo-de-chocolate.jpg'),
-  ('Bolo de Morango', 0, 'Morango', 'Bolo de morango com cobertura de morango', '/uploads/bolo-de-morango.jpg');
+INSERT INTO bolos (id, nome, preco, sabor, descricao, foto)
+VALUES
+(1, 'Bolo de Chocolate', 0, 'Chocolate', 'Um bolo rico e fofinho, com cobertura de chocolate cremoso, perfeito para os chocólatras.', 'uploads/bolo-de-chocolate.jpg'),
+(2, 'Bolo de Morango', 0, 'Morango', 'Delicado e doce, feito com massa macia e coberto com um creme suave de morango.', 'uploads/bolo-de-morango.jpg'),
+(3, 'Bolo de Terra', 0, 'Terra', 'Perfeito e barato, ofereça à um amigo com imaginação fértil. Podendo também ser usado para o aniversário de sua minhoca de estimação.', 'uploads/bolo-terra.jpg'),
+(4, 'Bolo de Coco', 0, 'Coco', 'Macio e úmido, coberto com flocos de coco para um sabor tropical.', 'uploads/bolo-coco.jpg'),
+(5, 'Bolo de Abacaxi', 0, 'Abacaxi', 'Um bolo invertido com pedaços caramelizados de abacaxi, perfeito para um toque tropical.', 'uploads/bolo-abacaxi.jpg'),
+(6, 'Bolo de Cenoura', 0, 'Cenoura', 'Um clássico brasileiro, com massa macia e cobertura irresistível de chocolate.', 'uploads/bolo-cenoura.jpg'),
+(7, 'Bolo Evangélicos', 0, 'Shinji', 'Um bolo perfeito para cerimônias cristãs, com uma massa macia e cobertura de chocolate branco cremoso.', 'uploads/bolo-shinji.webp'),
+(8, 'Bolo Evangélico', 0, 'Creme', 'Agora sim, um bolo perfeito para cerimônias cristãs, com uma massa macia e cobertura de chantily cremoso.', 'uploads/bolo-evangelico.jpg'),
+(9, 'Bolo Red Velvet', 0, 'Baunilha e Cacau', 'Elegante e delicioso, com sabor suave e cobertura de cream cheese.', 'uploads/bolo-red-velvet.jpg'),
+(10, 'Bolo Floresta Negra', 0, 'Chocolate e Cereja', 'Uma explosão de chocolate com recheio de chantilly e cerejas.', 'uploads/bolo-floresta-negra.jpg'),
+(11, 'Yellow Cake', 0, 'Urânio', 'Inspirado na ciência, com um sabor único para aqueles que adoram curiosidades.', 'uploads/yellow-cake.webp'),
+(12, 'Bolo de Maracujá', 0, 'Maracujá', 'Doce e azedinho na medida certa, com cobertura de calda de maracujá.', 'uploads/bolo-maracuja.jpg'),
+(13, 'Bolo de Amêndoas', 0, 'Amêndoas', 'Rico e sofisticado, com textura leve e sabor marcante.', 'uploads/bolo-amendoa.jpg'),
+(14, 'Januário', 0, 'Januário', 'Não era um bolo de fubá senhora, era o Januário 😭', 'uploads/bolo-gato.jpg'),
+(15, 'Bolo Churros', 0, 'Canela e Doce de Leite', 'Bolo de churros desconstruído, também conhecido como churros.', 'uploads/bolo-churros.jpg'),
+(16, 'Bolo do Vasco', 0, 'Vascão', 'Uma homenagem ao Vascão, com sabores que celebram o time do coração.', 'uploads/bolo-vasco.jpg'),
+(17, 'Bolo de Fubá', 0, 'Fubá', 'Um toque nostálgico, perfeito com café, macio e aromático.', 'uploads/bolo-fuba.jpg'),
+(18, 'Bolo Arco-Íris', 0, 'Baunilha Colorida', 'Camadas coloridas que encantam os olhos e um sabor clássico que agrada a todos.', 'uploads/bolo-arco-iris.jpg'),
+(19, 'Guilherme Boulos com um bolo', 0, 'Boulos', 'Boulos te oferece um bolo, aceitas?', 'uploads/boulos.jpg');
+(20, 'Guilherme Boulos? com um bolo', 0, 'Mauricio Meireles', 'Este não é o Boulos. Mauricio Meireles te oferece um bolo, aceitas?', 'uploads/bolo-mauricio.jpg');
+COMMIT;

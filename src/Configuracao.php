@@ -1,5 +1,5 @@
 <?php
-    define("HOST","localhost:3308");
+    define("HOST","localhost");
     define("USUARIO","root");
     define("SENHA","");
     define("BANCO","bolos");

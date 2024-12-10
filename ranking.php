@@ -10,9 +10,8 @@ if (!isset($_SESSION['idUsuario'])) {
 }
 if (isset($_GET['order'])) {
     $bolos = Bolo::findAllRanking($_GET['order']);
-}else{
+} else {
     $bolos = Bolo::findAllRanking();
-
 }
 ?>
 
@@ -28,16 +27,20 @@ if (isset($_GET['order'])) {
 
 <body>
     <header>
-        <h1>Ranking de Votação</h1>
+        <div class="order-by-container">
+            <h1 class="titulo">RANKING</h1>
+
+            <form class="order-by" method="get" action="ranking.php">
+                <label for="order">Ordenar por votos:</label>
+                <select name="order" id="order" onchange="this.form.submit()">
+                    <option <?php echo !isset($_GET['order']) || $_GET['order'] == 'DESC' ? 'selected' : ''; ?> value="DESC">Do maior para o menor</option>
+                    <option <?php echo isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'selected' : ''; ?> value="ASC">Do menor para o maior</option>
+                </select>
+            </form>
+        </div>
     </header>
 
-    <form method="get" action="ranking.php">
-        <label for="order">Ordenar por votos:</label>
-        <select name="order" id="order" onchange="this.form.submit()">
-            <option <?php echo !isset($_GET['order']) || $_GET['order'] == 'DESC' ? 'selected' : ''; ?> value="DESC">Do maior para o menor</option>
-            <option <?php echo isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'selected' : ''; ?> value="ASC">Do menor para o maior</option>
-        </select>
-    </form>
+
 
     <table class="ranking-table">
         <thead>
@@ -48,14 +51,14 @@ if (isset($_GET['order'])) {
         </thead>
         <tbody>
 
-        <?php
-        foreach ($bolos as $bolo) {
-        echo "<tr>";
-        echo "<td class='bolo-nome'>" . htmlspecialchars($bolo->getNome()) . "</td>";
-        echo "<td class='bolo-votos'>" . htmlspecialchars($bolo->getVotos()) . " votos</td>";
-        echo "</tr>";
-    }
-    ?>
+            <?php
+            foreach ($bolos as $bolo) {
+                echo "<tr>";
+                echo "<td class='bolo-nome'>" . htmlspecialchars($bolo->getNome()) . "</td>";
+                echo "<td class='bolo-votos'>" . htmlspecialchars($bolo->getVotos()) . " votos</td>";
+                echo "</tr>";
+            }
+            ?>
         </tbody>
     </table>
 

@@ -100,7 +100,7 @@ class Bolo implements ActiveRecord
         $sql = "SELECT * FROM bolo WHERE idBolo = {$id}";
         $resultado = $conexao->consulta($sql);
         if (empty($resultado)) {
-            echo ("A padaria está fechada, os bolos acabaram!");
+            echo ("<p>A boleria está fechada, os bolos acabaram!</p>");
 
             exit();
         }

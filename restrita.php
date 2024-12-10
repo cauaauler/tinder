@@ -58,12 +58,12 @@ if (isset($_GET['idBolo']) && !$avaliacaoExistente) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Página de Contatos</title>
+    <title>Página Inicial</title>
 </head>
 
 <body>
     <header>
-        <h1>Hoje eu inventei de fazer um bolo ó™</h1>
+        <h1 class="titulo">BOLOS</h1>
         <a href='sair.php'>Sair</a>
         <a href='ranking.php'>Ranking</a>
 
@@ -85,14 +85,15 @@ if (isset($_GET['idBolo']) && !$avaliacaoExistente) {
                     $bolo = Bolo::find($boloAtual);
                     echo "<h1 class='bolo-titulo'>" . $bolo->getNome() . "</h1>";
                     // echo "<p>" . $bolo->getVotos() . " votos</p>";
-                    echo "<p>" . $bolo->getSabor() . "</p>";
+                    // echo "<p>" . $bolo->getSabor() . "</p>";
                     echo "<p>" . $bolo->getDescricao() . "</p>";
                     echo "<img src='" . $bolo->getImagem() . "' alt='" . $bolo->getNome() . "' class='bolo-imagem'>";
-
-                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=1'>Comeria</a>";
-                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=0'>Não comeria</a>";
+                    echo "<div class='botoes_avaliacao'>";
+                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=1'>COMERIA</a>";
+                    echo "<a href='restrita.php?idBolo=" . $bolo->getId() . "&voto=0'>NÃO COMERIA</a>";
+                    echo "</div>";
                 } else {
-                    echo "<p>A padaria está fechada, os bolos acabaram!</p>";
+                    echo "<p>A boleria está fechada, os bolos acabaram!</p>";
                 }
                 ?>
             </div>

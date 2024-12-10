@@ -29,19 +29,23 @@ if (isset($_POST['botao'])) {
             header("location: restrita.php");
             exit;
         }
-        }
-    
+    }
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Adicionar Bolo</title>
+
+    <header>
+        <h1 class="titulo">CADASTRAR BOLO</h1>
+    </header>
 
     <script>
         function validarImagem() {
@@ -50,7 +54,7 @@ if (isset($_POST['botao'])) {
             if (arquivo) {
                 const extensao = arquivo.name.split('.').pop().toLowerCase();
                 const extensoesPermitidas = ['jpg', 'jpeg', 'png', 'jfif', 'webp'];
-                
+
                 if (!extensoesPermitidas.includes(extensao)) {
                     alert('Formato de imagem não permitido. Os formatos permitidos são JPG, JPEG, PNG, JFIF e WEBP.');
                     imagemInput.value = ''; // Limpa o arquivo selecionado
@@ -68,21 +72,21 @@ if (isset($_POST['botao'])) {
 
 <body>
 
-<?php if (isset($mensagem)) : ?>
-    <p><?= $mensagem ?></p>
-<?php endif ?>
-<form action='formCadBolo.php' method='post' enctype='multipart/form-data'>
-    <label for='nome'>Nome:</label>
-    <input type='text' name='nome' id='nome' required>
-    <label for='sabor'>Sabor:</label>
-    <input type='text' name='sabor' id='sabor' required>
-    <label for='descricao'>Descricao:</label>
-    <input type='text' name='descricao' id='descricao' required>
-    <label for='imagem'>Imagem:</label>
-    <input type='file' name='imagem' id='imagem' required>
-    <input type='submit' name='botao' value='Cadastrar'>
-</form>
-<a value="Voltar" href="restrita.php" class="dandadan" id="voltar-btn">Voltar</a>
+    <?php if (isset($mensagem)) : ?>
+        <p><?= $mensagem ?></p>
+    <?php endif ?>
+    <form action='formCadBolo.php' method='post' enctype='multipart/form-data'>
+        <label for='nome'>Nome:</label>
+        <input type='text' name='nome' id='nome' required>
+        <label for='sabor'>Sabor:</label>
+        <input type='text' name='sabor' id='sabor' required>
+        <label for='descricao'>Descricao:</label>
+        <input type='text' name='descricao' id='descricao' required>
+        <label for='imagem'>Imagem:</label>
+        <input type='file' name='imagem' id='imagem' required>
+        <input type='submit' name='botao' value='Cadastrar'>
+    </form>
+    <a value="Voltar" href="restrita.php" class="dandadan" id="voltar-btn">Voltar</a>
 </body>
 
 </html>
