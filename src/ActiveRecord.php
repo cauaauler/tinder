@@ -1,6 +1,6 @@
 <?php
 
-namespace CauaAuler\Tinder;
+namespace Guy\Tinder;
 
 interface ActiveRecord{
 

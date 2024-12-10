@@ -1,6 +1,6 @@
 <?php
 
-namespace CauaAuler\Tinder;
+namespace Guy\Tinder;
 
 class Usuario implements ActiveRecord {
     private int $id;

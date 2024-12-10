@@ -1,14 +1,14 @@
 {
-    "name": "caua_auler/tinder",
+    "name": "guy/tinder",
     "autoload": {
         "psr-4": {
-            "CauaAuler\\Tinder\\": "src/"
+            "Guy\\Tinder\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Cauã Auler",
-            "email": "cauaauler@gmail.com"
+            "name": "GusMN",
+            "email": "160977092+GusMN@users.noreply.github.com"
         }
     ],
     "require": {}

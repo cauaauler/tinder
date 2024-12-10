@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use CauaAuler\Tinder\Bolo;
+use Guy\Tinder\Bolo;
 
 if (isset($_POST['botao'])) {
     $bolos = Bolo::findAll();
@@ -26,7 +26,7 @@ if (isset($_POST['botao'])) {
             move_uploaded_file($imagem['tmp_name'], $caminhoImagem);
             $b = new Bolo($_POST['nome'], $_POST['votos'] = 0, $_POST['sabor'], $_POST['descricao'], $caminhoImagem);
             $b->save();
-            header("location: index.php");
+            header("location: restrita.php");
             exit;
         }
         }
@@ -40,6 +40,7 @@ if (isset($_POST['botao'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Adicionar Bolo</title>
 
     <script>
@@ -81,7 +82,7 @@ if (isset($_POST['botao'])) {
     <input type='file' name='imagem' id='imagem' required>
     <input type='submit' name='botao' value='Cadastrar'>
 </form>
-<input type="button" value="Voltar" onclick="window.location.href = 'restrita.php';">
+<a value="Voltar" href="restrita.php" class="dandadan" id="voltar-btn">Voltar</a>
 </body>
 
 </html>

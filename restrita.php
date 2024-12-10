@@ -2,9 +2,9 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
-use CauaAuler\Tinder\Bolo;
-use CauaAuler\Tinder\Bolo_usuario;
-use CauaAuler\Tinder\MySQL;
+use Guy\Tinder\Bolo;
+use Guy\Tinder\Bolo_usuario;
+use Guy\Tinder\MySQL;
 
 session_start();
 if (!isset($_SESSION['idUsuario'])) {

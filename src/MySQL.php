@@ -1,6 +1,6 @@
 <?php
 
-namespace CauaAuler\Tinder;
+namespace Guy\Tinder;
 
 require_once __DIR__."\Configuracao.php";
 
