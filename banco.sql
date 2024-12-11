@@ -45,7 +45,7 @@ VALUES
   (1, 'Administrador', 'admin@tinder.com', '$2y$10$V7H2oyxLxDBCKtegSFx/S.DlG2CAQBMVpIFA2GcfoOsTVA5aQz0Dq');
 
 -- Inserir dados iniciais de bolos
-INSERT INTO bolos (id, nome, preco, sabor, descricao, foto)
+INSERT INTO bolo (id, nome, preco, sabor, descricao, foto)
 VALUES
 (1, 'Bolo de Chocolate', 0, 'Chocolate', 'Um bolo rico e fofinho, com cobertura de chocolate cremoso, perfeito para os chocólatras.', 'uploads/bolo-de-chocolate.jpg'),
 (2, 'Bolo de Morango', 0, 'Morango', 'Delicado e doce, feito com massa macia e coberto com um creme suave de morango.', 'uploads/bolo-de-morango.jpg'),
