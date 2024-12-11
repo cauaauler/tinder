@@ -68,7 +68,6 @@ if (isset($_GET['idBolo']) && !$avaliacaoExistente) {
         <a href='ranking.php'>Ranking</a>
 
         <?php
-        //Provavelmente não é nem um pouco seguro
         if($_SESSION['idUsuario'] == 1){
             echo "<a href='formCadBolo.php'>Cadastrar novo bolo</a>";
             echo "<a href='viewBolos.php'>Todos os Bolos</a>";

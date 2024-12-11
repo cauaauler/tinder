@@ -242,8 +242,9 @@ form {
 	gap: 10px;
 	border: 0px;
 	background-color: transparent;
+	height: 80px;
 	width: 80%;
-	max-width: 400px;
+	/* max-width: 400px; */
 	box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
 
